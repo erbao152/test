@@ -6,6 +6,7 @@ import cn.itcast.order.pojo.Order;
 import cn.itcast.order.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 public class OrderService {
@@ -23,11 +24,12 @@ public class OrderService {
         User user = userClient.findById(order.getUserId());
         // 3.封装User到order
         order.setUser(user);
+
         // 4.返回
         return order;
     }
 
-    /*@Autowired
+    @Autowired
     private RestTemplate restTemplate;
     public Order queryOrderById(Long orderId) {
         // 1.查询订单
@@ -38,5 +40,5 @@ public class OrderService {
         order.setUser(user);
         // 4.返回
         return order;
-    }*/
+    }
 }
